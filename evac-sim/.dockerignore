@@ -1,0 +1,10 @@
+target/
+node_modules/
+web/public/*.js
+web/public/*.css
+data/
+.git/
+.idea/
+.vscode/
+*.md
+!README.md

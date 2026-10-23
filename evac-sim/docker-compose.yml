@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  evac:
+    build: .
+    container_name: evac-sim
+    ports:
+      - "8080:8080"
+    environment:
+      DB_PATH: /data/evac.db
+      ADMIN_USERNAME: ${ADMIN_USERNAME:-admin}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-admin}
+      SESSION_TTL_HOURS: ${SESSION_TTL_HOURS:-168}
+    volumes:
+      - evac-data:/data
+    restart: unless-stopped
+
+volumes:
+  evac-data:
