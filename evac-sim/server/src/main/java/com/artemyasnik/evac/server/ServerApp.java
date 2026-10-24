@@ -70,7 +70,7 @@ public final class ServerApp {
         BuildingService buildingService = new BuildingService(buildings, floors, scenarios);
         FloorService floorService = new FloorService(floors, buildings);
         ScenarioService scenarioService = new ScenarioService(scenarios, buildings, floors, marks);
-        MarkService markService = new MarkService(marks, scenarios, floors);
+        MarkService markService = new MarkService(marks, scenarios, floors, buildings);
 
         // 5. Контроллеры.
         AuthController authCtrl = new AuthController(auth, config.sessionTtlHours());

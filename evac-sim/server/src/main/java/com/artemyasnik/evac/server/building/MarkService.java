@@ -10,22 +10,25 @@ public final class MarkService {
     private final MarkRepository marks;
     private final ScenarioRepository scenarios;
     private final FloorRepository floors;
+    private final BuildingRepository buildings; // ДОБАВЛЕНО
 
     public MarkService(MarkRepository marks,
                        ScenarioRepository scenarios,
-                       FloorRepository floors) {
+                       FloorRepository floors,
+                       BuildingRepository buildings) { // ДОБАВЛЕНО
         this.marks = marks;
         this.scenarios = scenarios;
         this.floors = floors;
+        this.buildings = buildings;
     }
 
     public List<MarkDto> list(long buildingId, long scenarioId, long userId) {
-        requireScenario(buildingId, scenarioId, userId);
+        requireOwnership(buildingId, scenarioId, userId);
         return marks.findAllByScenario(scenarioId);
     }
 
     public MarkDto create(long buildingId, long scenarioId, long userId, MarkRequest req) {
-        requireScenario(buildingId, scenarioId, userId);
+        requireOwnership(buildingId, scenarioId, userId);
         validate(req, buildingId);
         long id = marks.create(scenarioId, req);
         return marks.findByIdAndScenario(id, scenarioId)
@@ -33,7 +36,7 @@ public final class MarkService {
     }
 
     public MarkDto update(long buildingId, long scenarioId, long markId, long userId, MarkRequest req) {
-        requireScenario(buildingId, scenarioId, userId);
+        requireOwnership(buildingId, scenarioId, userId);
         validate(req, buildingId);
         if (!marks.update(markId, scenarioId, req)) {
             throw new NotFoundException("Метка не найдена");
@@ -43,26 +46,25 @@ public final class MarkService {
     }
 
     public void delete(long buildingId, long scenarioId, long markId, long userId) {
-        requireScenario(buildingId, scenarioId, userId);
+        requireOwnership(buildingId, scenarioId, userId);
         if (!marks.delete(markId, scenarioId)) {
             throw new NotFoundException("Метка не найдена");
         }
     }
 
     public void deleteAll(long buildingId, long scenarioId, long userId) {
-        requireScenario(buildingId, scenarioId, userId);
+        requireOwnership(buildingId, scenarioId, userId);
         marks.deleteAllByScenario(scenarioId);
     }
 
-    /**
-     * Проверяет, что сценарий существует и принадлежит зданию пользователя.
-     */
-    private void requireScenario(long buildingId, long scenarioId, long userId) {
-        // Проверка владения зданием — через ScenarioRepository (там уже есть логика поиска).
-        // Если сценарий не найден в этом здании — 404.
+    // ИСПРАВЛЕНО: полная проверка владения
+    private void requireOwnership(long buildingId, long scenarioId, long userId) {
+        // 1. Проверяем, что здание принадлежит пользователю
+        buildings.findByIdAndUser(buildingId, userId)
+                .orElseThrow(() -> new NotFoundException("Здание не найдено"));
+        // 2. Проверяем, что сценарий принадлежит этому зданию
         scenarios.findByIdAndBuilding(scenarioId, buildingId)
                 .orElseThrow(() -> new NotFoundException("Сценарий не найден"));
-        // Примечание: владение зданием пользователем проверит контроллер / middleware.
     }
 
     private void validate(MarkRequest req, long buildingId) {
