@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+    <rect x="0" y="0" width="800" height="600" fill="#f7f7f7"/>
+
+    <rect x="50" y="50" width="700" height="500" fill="none" stroke="#222" stroke-width="6"/>
+    <rect x="50" y="50" width="700" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+    <rect x="50" y="250" width="700" height="100" fill="#fdf6dc" stroke="#222" stroke-width="4"/>
+    <rect x="50" y="350" width="700" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+
+    <rect x="380" y="246" width="40" height="8" fill="#fff"/>
+    <rect x="380" y="346" width="40" height="8" fill="#fff"/>
+
+    <!-- Лестница вниз — та же точка, что на первом этаже -->
+    <rect x="650" y="450" width="40" height="60" fill="#2d5fd0"/>
+    <text x="670" y="485" font-size="14" text-anchor="middle" fill="#fff" font-family="sans-serif">↓</text>
+
+    <text x="400" y="150" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Зал</text>
+    <text x="400" y="305" font-size="16" text-anchor="middle" fill="#444" font-family="sans-serif">Коридор 2 этажа</text>
+    <text x="400" y="450" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Офис</text>
+
+    <circle cx="200" cy="120" r="5" fill="#b5730b"/>
+    <circle cx="400" cy="120" r="5" fill="#b5730b"/>
+    <circle cx="600" cy="120" r="5" fill="#b5730b"/>
+</svg>

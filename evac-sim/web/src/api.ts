@@ -89,5 +89,7 @@ export const api = {
             request<Mark>(`/buildings/${bid}/scenarios/${sid}/marks/${mid}`, { method: 'PUT', body: JSON.stringify(data) }),
         delete: (bid: number, sid: number, mid: number) =>
             request<void>(`/buildings/${bid}/scenarios/${sid}/marks/${mid}`, { method: 'DELETE' }),
+        deleteAll: (bid: number, sid: number) =>
+            request<void>(`/buildings/${bid}/scenarios/${sid}/marks`, { method: 'DELETE' }),
     }
 };

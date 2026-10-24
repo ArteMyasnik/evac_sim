@@ -1,19 +1,22 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import { fileURLToPath, URL } from 'node:url'
+
+const __dirname = fileURLToPath(new URL('.', import.meta.url))
 
 export default defineConfig({
-    publicDir: false,
+    publicDir: false, // Важно: не трогаем папку static
     build: {
         outDir: 'public',
         emptyOutDir: false,
         rollupOptions: {
             input: {
-                login: resolve(__dirname, 'src/ui/login.ts'),
+                login:     resolve(__dirname, 'src/ui/login.ts'),
                 buildings: resolve(__dirname, 'src/ui/buildings.ts'),
-                building: resolve(__dirname, 'src/ui/building.ts'),
-                scenario: resolve(__dirname, 'src/ui/scenario.ts'),
-                viewer: resolve(__dirname, 'src/ui/viewer.ts'),
-                shared: resolve(__dirname, 'src/styles/shared.css')
+                building:  resolve(__dirname, 'src/ui/building.ts'),
+                scenario:  resolve(__dirname, 'src/ui/scenario.ts'),
+                viewer:    resolve(__dirname, 'src/ui/viewer.ts'),
+                shared:    resolve(__dirname, 'src/styles/shared.css')
             },
             output: {
                 entryFileNames: '[name].js',

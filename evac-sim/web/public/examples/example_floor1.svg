@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+    <!-- Фон -->
+    <rect x="0" y="0" width="800" height="600" fill="#f7f7f7"/>
+
+    <!-- Внешние стены -->
+    <rect x="50" y="50" width="700" height="500" fill="none" stroke="#222" stroke-width="6"/>
+
+    <!-- Внутренние стены (комнаты) -->
+    <!-- Левая верхняя комната -->
+    <rect x="50" y="50" width="300" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+    <!-- Правая верхняя комната -->
+    <rect x="350" y="50" width="400" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+    <!-- Коридор -->
+    <rect x="50" y="250" width="700" height="100" fill="#fdf6dc" stroke="#222" stroke-width="4"/>
+    <!-- Левая нижняя комната -->
+    <rect x="50" y="350" width="300" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+    <!-- Правая нижняя комната -->
+    <rect x="350" y="350" width="400" height="200" fill="#e8eef5" stroke="#222" stroke-width="4"/>
+
+    <!-- Двери (проёмы) между комнатами и коридором -->
+    <rect x="180" y="246" width="40" height="8" fill="#fff"/>
+    <rect x="530" y="246" width="40" height="8" fill="#fff"/>
+    <rect x="180" y="346" width="40" height="8" fill="#fff"/>
+    <rect x="530" y="346" width="40" height="8" fill="#fff"/>
+
+    <!-- Выход (на левой стене коридора) -->
+    <rect x="46" y="280" width="8" height="40" fill="#0e8f5b"/>
+
+    <!-- Лестница (в правой нижней комнате, ведёт наверх) -->
+    <rect x="650" y="450" width="40" height="60" fill="#2d5fd0"/>
+    <text x="670" y="485" font-size="14" text-anchor="middle" fill="#fff" font-family="sans-serif">↑</text>
+
+    <!-- Подписи комнат -->
+    <text x="200" y="150" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Комната A</text>
+    <text x="550" y="150" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Комната B</text>
+    <text x="400" y="305" font-size="16" text-anchor="middle" fill="#444" font-family="sans-serif">Коридор</text>
+    <text x="200" y="450" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Комната C</text>
+    <text x="500" y="450" font-size="18" text-anchor="middle" fill="#444" font-family="sans-serif">Лестничная клетка</text>
+
+    <!-- Точки спавна (люди) -->
+    <circle cx="150" cy="120" r="5" fill="#b5730b"/>
+    <circle cx="250" cy="120" r="5" fill="#b5730b"/>
+    <circle cx="550" cy="120" r="5" fill="#b5730b"/>
+    <circle cx="650" cy="120" r="5" fill="#b5730b"/>
+</svg>

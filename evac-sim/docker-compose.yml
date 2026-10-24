@@ -2,7 +2,9 @@ version: "3.9"
 
 services:
   evac:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: evac-sim
     ports:
       - "8080:8080"

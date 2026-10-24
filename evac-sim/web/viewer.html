@@ -3,9 +3,61 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Симуляция</title>
+    <title>Симуляция эвакуации</title>
+    <link rel="stylesheet" href="/public/shared.css">
+    <style>
+        .viewer-main { display: grid; grid-template-columns: 320px 1fr; gap: 16px; }
+        .plan-box { background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+        .plan-box svg { display: block; width: 100%; height: auto; max-height: 80vh; }
+        .stats { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; margin: 0; }
+        .floor-tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+        .floor-tabs button.on { outline: 2px solid var(--stair); }
+    </style>
 </head>
 <body>
-<div id="root">viewer: skeleton</div>
+<main class="viewer-main">
+    <aside>
+        <section>
+            <h2>Сценарий</h2>
+            <select id="scenario-select" style="width:100%; margin-bottom:8px;"></select>
+            <button id="load-btn" class="primary" style="width:100%">Загрузить</button>
+        </section>
+
+        <section>
+            <h2>Этаж</h2>
+            <div class="floor-tabs" id="floor-tabs"></div>
+        </section>
+
+        <section>
+            <h2>Управление</h2>
+            <button id="go-btn" class="primary">Запустить</button>
+            <button id="reset-btn" style="margin-left:8px;">Сбросить</button>
+            <label style="margin-top:12px">Скорость
+                <select id="speed-select">
+                    <option value="1">×1</option>
+                    <option value="5" selected>×5</option>
+                    <option value="20">×20</option>
+                </select>
+            </label>
+        </section>
+
+        <section>
+            <h2>Статистика</h2>
+            <dl class="stats">
+                <dt>Прошло, с</dt><dd id="s-time">0</dd>
+                <dt>Вышли</dt><dd id="s-out">0</dd>
+                <dt>В здании</dt><dd id="s-in">0</dd>
+                <dt>Не спаслись</dt><dd id="s-dead">0</dd>
+                <dt>Нет пути</dt><dd id="s-stuck">0</dd>
+            </dl>
+            <p id="msg" class="muted" style="margin-top:8px"></p>
+        </section>
+    </aside>
+
+    <div class="plan-box" id="plan-container">
+        <p class="muted" style="padding:24px">Выберите сценарий и нажмите «Загрузить».</p>
+    </div>
+</main>
+<script type="module" src="/public/viewer.js"></script>
 </body>
 </html>
